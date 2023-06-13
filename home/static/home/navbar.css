@@ -1,0 +1,42 @@
+html {
+    font-size: 100%;
+}
+
+.header {
+    display: flex;
+    background-color: #ffa585;
+    justify-content: space-between;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    margin: .5rem 1rem;
+}
+
+.section-item {
+    padding: .5rem 1rem;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem !important;
+    color: white;
+}
+
+.section-item + .section-item {
+    margin-left: 1rem;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #ff7344;
+    border-radius: 5px;
+}
+
+.hello {
+    color: black;
+}

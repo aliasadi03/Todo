@@ -1,0 +1,14 @@
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/message.css' %}" />
+{% endblock %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}

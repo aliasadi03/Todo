@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/tasks.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/fontawesome-free-6.4.0-web/css/all.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/navbar.css' %}" />
+    {% endblock %}
+
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %}
+
+{% block content %}
+  <div class="row" style="margin: 0;">
+    <div class="col-md-4" style="background-color: #f1eaff; height: 100vh;">
+      <h2 style="padding: 1rem 0;
+      display: flex;
+      justify-content: center;">To-Do Lists</h2>
+      <ul class="list-group">
+        {% for tdl in todolists %}
+        <div class="list-group-item{% if tdl.pk == todolist.pk %} active{% endif %}">
+          <a href="{% url 'tasks' tdl.pk %}" class="">{{ tdl.name }}</a>
+          <div class="edit-delete">
+            <a class='fa fa-pencil' style='color:#ffdd00' href="{% url 'task_list_edit' pk=tdl.pk %}"></a>
+            <a class="fa fa-trash" aria-hidden="true" href="{% url 'task_list_delete' pk=tdl.pk %}" style='color: red; margin-left: .3rem;'></a>
+          </div>
+        </div>
+        {% endfor %}
+      </ul>
+      <br>
+      <a class="btn btn-success tasklist margin-right" href="{% url 'task_list_new' %}">New Task List</a>
+    </div>
+    <div class="col-md-8">
+      <h2 style="padding: 1rem 0;
+      display: flex;
+      justify-content: center;">Tasks for {{ todolist.name }}</h2>
+      <div class="task_list_item">
+        <table class="table table-striped" style="margin-bottom: 0;">
+          <thead>
+            <tr>
+              <th scope="col" class="title-column"> Title </th>
+              <th scope="col" class="body-column"> Description </th>
+              <th scope="col" class="action-column"> Action </th>
+            </tr> 
+          </thead>
+          <tbody>
+          {% for task in tasks %} 
+            <tr class="table-row">
+              <td> {{ task.title }} </td>
+              <td> {{ task.body }} </td>
+              <td>
+                <a class='fa fa-pencil' style='color:#ffdd00' href="{% url 'task_edit' pk=task.pk %}"></a>
+                <!-- <a class="delete" href="{% url 'task_delete' pk=task.pk %}">Delete</a> -->
+                <a class="fa fa-trash" aria-hidden="true" href="{% url 'task_delete' pk=task.pk %}" style='color: red; margin-left: .3rem;'></a>
+              </td>
+            </tr>
+            {% empty %} 
+          <p>No tasks yet.</p>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="btns">
+        <a class="btn btn-success margin-right" href="{% url 'task_new' pk=pk %}">New Task</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

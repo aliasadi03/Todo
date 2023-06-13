@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/task_edit.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/fontawesome-free-6.4.0-web/css/all.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/navbar.css' %}" />
+    {% endblock %}
+
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Edit{% else %}New{% endif %} Task</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.title }}
+    {{ form.body }}
+    <input class="btn btn-primary" type="submit" value="Save">
+  </form>
+{% endblock %}

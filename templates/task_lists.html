@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'home/normalize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'home/navbar.css' %}" />
+{% endblock %}
+
+{% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1>Task Lists for {{ request.user }}</h1>
+    <ul>
+    {% for task_list in task_lists %}
+      <li><a href="{% url 'task_list_detail' pk=task_list.pk %}">{{ task_list.name }}</a></li>
+    {% empty %}
+      <li>No task lists yet.</li>
+      {% endfor %}
+    </ul>
+    <br>
+    <a class="btn btn-success tasklist margin-right" href="{% url 'task_list_new' %}">New Task List</a>
+    <form action="" method="post">
+      {% csrf_token %}
+    </form>
+  {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/register.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="container fit-content">
+        <h2 class="fit-content">Register</h3>
+    <form action="", method="post">
+        {% csrf_token %}
+        <div class="username fit-content">
+        {{ form.username }}
+        </div>
+        <div class="email fit-content">
+        {{ form.email }}
+        </div>
+        <div class="password fit-content">
+        {{ form.password }}
+        </div>
+        <button type="submit", value="Register" class="btn btn-primary">Register</button>
+    </form>
+    <p class="login fit-content">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+{% endblock %}

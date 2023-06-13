@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/fontawesome-free-6.4.0-web/css/all.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/navbar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/tasks.css' %}" />
+    {% endblock %}
+
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %}
+
+{% block content %}
+  <div class="row" style="margin: 0;">
+    <div class="col-md-4" style="background-color: #f1eaff; height: 100vh;">
+      <h2 style="padding: 1rem 0;
+      display: flex;
+      justify-content: center;">To-Do Lists</h2>
+      <ul class="list-group">
+        {% for tdl in todolists %}
+        <div class="list-group-item">
+          <a href="{% url 'tasks' tdl.pk %}">{{ tdl.name }}</a>
+          <div class="edit-delete">
+            <a class='fa fa-pencil' style='color:#ffdd00' href="{% url 'task_list_edit' pk=tdl.pk %}"></a>
+            <a class="fa fa-trash" aria-hidden="true" href="{% url 'task_list_delete' pk=tdl.pk %}" style='color: red; margin-left: .3rem;'></a>
+          </div>
+        </div>
+        {% endfor %}
+      </ul>
+      <br>
+      <a class="btn btn-success tasklist margin-right" href="{% url 'task_list_new' %}">New Task List</a>
+    </div>
+    <div class="col-md-8">
+      <h2 style="padding: 1rem 0;
+      display: flex;
+      justify-content: center;">Select a list to see tasks</h2>
+    </div>
+  </div>
+{% endblock %}

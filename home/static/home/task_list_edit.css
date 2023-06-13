@@ -1,0 +1,31 @@
+.content-forget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 3rem !important;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+#id_name {
+    width: 20rem;
+    height: 2.4rem;
+    border: 0.1rem solid blue;
+    border-radius: 5px;
+}
+
+.btn.btn-primary {
+    display: block;
+    width: 20rem;
+    margin: 1rem auto;
+}

@@ -1,0 +1,61 @@
+body {
+    background: no-repeat url('./images/laptop-computer-coffee-mug-and-phone-sitting-on-desk-with-sunrise-in-background-morning-1.jpg');
+    background-size: cover;
+}
+
+.col-md-6 {
+    max-width: fit-content;
+    border: 0.3rem solid black;
+    border-radius: 10px;
+    height: 30rem;
+    max-width: 25rem;
+    background-color: #fff4c7;
+    margin: 6rem auto;
+}
+
+h2 {
+    max-width: fit-content;
+    margin: auto;
+    font-size: 3rem;
+}
+
+input#id_username {
+    width: 20rem;
+    height: 2.4rem;
+    margin-top: 5rem;
+    border: 0.1rem solid blue;
+    border-radius: 5px;
+}
+
+input#id_password {
+    width: 20rem;
+    height: 2.4rem;
+    border: 0.1rem solid blue;
+    border-radius: 5px;
+}
+
+input#id_username::placeholder, input#id_password::placeholder {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+}
+
+button.btn.btn-primary {
+    width: 20rem;
+    margin-top: 2rem;
+}
+
+.form {
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.d-register {
+    max-width: fit-content;
+    margin: 1rem auto;
+}
+
+.forget-pass {
+    display: block;
+    max-width: fit-content;
+    margin: 1rem auto;
+}
